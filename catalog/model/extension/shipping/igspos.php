@@ -6,6 +6,7 @@ class ModelExtensionShippingIgspos extends Model {
 		$classname = str_replace('vq2-catalog_model_shipping_', '', basename(__FILE__, '.php'));
 		$this->load->language('extension/shipping/' . $classname);
 		$title = $this->language->get('text_title');
+		$days = $this->language->get('text_days');
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "zone_to_geo_zone WHERE geo_zone_id = '" . (int)$this->config->get('flat_geo_zone_id') . "' AND country_id = '" . (int)$address['country_id'] . "' AND (zone_id = '" . (int)$address['zone_id'] . "' OR zone_id = '0')");
 
 		if (!$this->config->get('flat_geo_zone_id')) {
@@ -47,9 +48,10 @@ class ModelExtensionShippingIgspos extends Model {
 							$curr = $this->model_localisation_currency->getCurrencyByCode('IDR');
 							$cost = $cost / $curr['value'];
 						}
+						$etd =  ' -'. ($res['cost'][0]['etd'] === '1-1' ? '1' : $res['cost'][0]['etd']) . ' '. $days . ' ';
 						$quote_data[$res['service']] = array(
 							'code'         => $classname . '.' . $res['service'],
-							'title'        => 'POS - ' . $res['service'],
+							'title'        => 'POS - ' . $res['service'] . $etd,
 							'cost'         => $cost,
 							'tax_class_id' => $this->config->get($classname.'_tax_class_id'),
 							'text'         => $this->currency->format($this->tax->calculate($cost, $this->config->get($classname.'_tax_class_id'), $this->config->get('config_tax')), $this->session->data['currency'])

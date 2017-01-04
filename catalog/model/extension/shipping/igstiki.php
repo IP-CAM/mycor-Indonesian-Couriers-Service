@@ -45,7 +45,7 @@ class ModelExtensionShippingIgstiki extends Model {
 							$curr = $this->model_localisation_currency->getCurrencyByCode('IDR');
 							$cost = $cost / $curr['value'];
 						}
-						$etd =  ' -'. ($res['cost'][0]['etd'] === '1-1' ? '1' : $res['cost'][0]['etd']) . ' '. $days . ' ';
+						$etd =  ' - '. ($res['cost'][0]['etd'] === '1-1' ? '1' : $res['cost'][0]['etd']) . ' '. $days . ' ';
 						$quote_data[$res['service']] = array(
 							'code'         => $classname . '.' . $res['service'],
 							'title'        => 'TIKI - '. $res['service'] . $etd,

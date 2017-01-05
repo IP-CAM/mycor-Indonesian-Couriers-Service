@@ -1,4 +1,6 @@
-﻿ALTER TABLE oc_zone ADD COLUMN raoprop_id INT(11) NULL;
+﻿ALTER TABLE oc_address ADD COLUMN district_id INT(11) NULL;
+
+ALTER TABLE oc_zone ADD COLUMN raoprop_id INT(11) NULL;
 
 UPDATE oc_zone SET name = 'Nusa Tenggara Barat (NTB)' WHERE name = 'Nusa Tenggara Barat';
 UPDATE oc_zone SET name = 'Nusa Tenggara Timur (NTT)' WHERE name = 'Nusa Tenggara Timur';

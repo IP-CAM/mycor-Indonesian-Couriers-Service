@@ -29,8 +29,8 @@ class ModelExtensionShippingIgspos extends Model {
 
 			$origin_id = $this->config->get('shindo_city_id');
 			$district_id = $address['district_id'];
-
-			$json = $this->getCost($origin_id, $district_id, $shipping_weight);
+			$key = $this->config->get('shindo_apikey');
+			$json = $this->getCost($origin_id, $district_id, $shipping_weight, $key);
 			$quote_data = array();
 			if (isset($json['rajaongkir']['results'][0])) {
 				foreach ($json['rajaongkir']['results'][0]['costs'] as $res) {
@@ -80,7 +80,7 @@ class ModelExtensionShippingIgspos extends Model {
 		return $method_data;
 	}
 
-	public function getCost($origin, $destination, $weight) {
+	public function getCost($origin, $destination, $weight, $key) {
 		$curl = curl_init();
 		curl_setopt_array($curl, array(
 		  CURLOPT_URL => "http://api.rajaongkir.com/starter/cost",
@@ -93,7 +93,7 @@ class ModelExtensionShippingIgspos extends Model {
 		  CURLOPT_POSTFIELDS => "origin=" . (int)$origin . "&destination=" . (int)$destination . "&weight=" . (int)$weight ."&courier=pos",
 		  CURLOPT_HTTPHEADER => array(
 				"content-type: application/x-www-form-urlencoded",
-		    "key: 83e1d5b58f19c32190a3e287f9562833"
+				"key: " . $key,
 		  ),
 		));
 		$response = curl_exec($curl);

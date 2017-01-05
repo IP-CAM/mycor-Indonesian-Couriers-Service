@@ -26,7 +26,10 @@ class ModelExtensionShippingIgspos extends Model {
 			$to = $this->config->get($classname . '_weight_class_id');
 
 			$shipping_weight = str_replace(',','',$this->weight->convert($shipping_weight, $from, $to));
-
+			$hf = 0;
+			if ($this->config->get($classname . '_handling')) {
+					$hf = $this->config->get($classname . '_handling');
+			}
 			$origin_id = $this->config->get('shindo_city_id');
 			$district_id = $address['district_id'];
 			$key = $this->config->get('shindo_apikey');
@@ -43,6 +46,11 @@ class ModelExtensionShippingIgspos extends Model {
 					}
 					if ($stat) {
 						$cost = $res['cost'][0]['value'];
+						if ($this->config->get($classname . '_handlingmode') == 2) {
+							$cost = $cost + ($hf * ($shipping_weight/1000));
+						} else {
+							$cost = $cost + $hf;
+						}
 						if ($this->config->get('config_currency') <>'IDR') {
 							$this->load->model('localisation/currency');
 							$curr = $this->model_localisation_currency->getCurrencyByCode('IDR');

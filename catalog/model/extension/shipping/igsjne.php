@@ -7,6 +7,7 @@ class ModelExtensionShippingIgsjne extends Model {
 		$this->load->language('extension/shipping/' . $classname);
 		$title = $this->language->get('text_title');
 		$days = $this->language->get('text_days');
+		$error_currency = $this->language->get('error_currency');
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "zone_to_geo_zone WHERE geo_zone_id = '" . (int)$this->config->get('flat_geo_zone_id') . "' AND country_id = '" . (int)$address['country_id'] . "' AND (zone_id = '" . (int)$address['zone_id'] . "' OR zone_id = '0')");
 
 		if (!$this->config->get('flat_geo_zone_id')) {
@@ -30,6 +31,20 @@ class ModelExtensionShippingIgsjne extends Model {
 			if ($this->config->get($classname . '_handling')) {
 					$hf = $this->config->get($classname . '_handling');
 			}
+			//check IDR currency
+			$this->load->model('localisation/currency');
+			$curr = $this->model_localisation_currency->getCurrencyByCode('IDR');
+			if (!$curr) {
+				$method_data = array(
+					'code'       => $classname,
+					'title'      => $title,
+					'quote'      => array(),
+					'sort_order' => $this->config->get($classname . '_sort_order'),
+					'error'      => $error_currency
+				);
+				return $method_data;
+			}
+
 			$origin_id = $this->config->get('shindo_city_id');
 			$district_id = $address['district_id'];
 			$key = $this->config->get('shindo_apikey');
@@ -53,8 +68,6 @@ class ModelExtensionShippingIgsjne extends Model {
 						}
 
 						if ($this->config->get('config_currency') <>'IDR') {
-							$this->load->model('localisation/currency');
-							$curr = $this->model_localisation_currency->getCurrencyByCode('IDR');
 							$cost = $cost / $curr['value'];
 						}
 						$etd =  ' - '. ($res['cost'][0]['etd'] === '1-1' ? '1' : $res['cost'][0]['etd']) . ' '. $days . ' ';

@@ -96,9 +96,11 @@
             <label class="col-sm-2 control-label" for="input-zone"><?php echo $entry_zone; ?></label>
             <div class="col-sm-10">
               <select name="zone_id" id="input-zone" class="form-control">
+                <!--frd-->
                 <?php if (!empty($zone_id)) {?>
                 <option value="<?php echo $zone_id; ?>"></option>
                 <?php } ?>
+                <!---->
               </select>
               <?php if ($error_zone) { ?>
               <div class="text-danger"><?php echo $error_zone; ?></div>

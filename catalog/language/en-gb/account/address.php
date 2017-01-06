@@ -22,7 +22,6 @@ $_['entry_city']           = 'City';
 $_['entry_country']        = 'Country';
 $_['entry_zone']           = 'Region / State';
 $_['entry_district']           = 'District / City'; //frd
-
 $_['entry_default']        = 'Default Address';
 
 // Error

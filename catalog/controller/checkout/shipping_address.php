@@ -52,8 +52,8 @@ class ControllerCheckoutShippingAddress extends Controller {
 		}
 
 		//frd
-		if (isset($this->request->post['payment_address']['district_id'])) {
-			$data['district_id'] =  $this->session->data['payment_address']['district_id'];
+		if (isset($this->request->post['shipping_address']['district_id'])) {
+			$data['district_id'] =  $this->session->data['shipping_address']['district_id'];
 		} else {
 			$data['district_id'] = '';
 		}
@@ -131,7 +131,15 @@ class ControllerCheckoutShippingAddress extends Controller {
 					$this->load->model('account/address');
 
 					$this->session->data['shipping_address'] = $this->model_account_address->getAddress($this->request->post['address_id']);
-
+					//frd
+					$this->load->model('localisation/district');
+					$district = $this->model_localisation_district->getDistrict($this->session->data['shipping_address']['district_id']);
+					if (isset($district['rajaongkir']['results']['city_name'])){
+						$this->session->data['shipping_address']['district'] = $district['rajaongkir']['results']['city_name'] . ' - ' . $district['rajaongkir']['results']['type'];
+					} else {
+						$this->session->data['shipping_address']['district'] = '';
+					}
+					//---
 					unset($this->session->data['shipping_method']);
 					unset($this->session->data['shipping_methods']);
 				}
@@ -188,6 +196,15 @@ class ControllerCheckoutShippingAddress extends Controller {
 					$address_id = $this->model_account_address->addAddress($this->request->post);
 
 					$this->session->data['shipping_address'] = $this->model_account_address->getAddress($address_id);
+					//frd
+					$this->load->model('localisation/district');
+					$district = $this->model_localisation_district->getDistrict($this->session->data['shipping_address']['district_id']);
+					if (isset($district['rajaongkir']['results']['city_name'])){
+						$this->session->data['shipping_address']['district'] = $district['rajaongkir']['results']['city_name'] . ' - ' . $district['rajaongkir']['results']['type'];
+					} else {
+						$this->session->data['shipping_address']['district'] = '';
+					}
+					//---
 
 					unset($this->session->data['shipping_method']);
 					unset($this->session->data['shipping_methods']);

@@ -100,9 +100,14 @@ class ControllerExtensionShippingShindo extends Controller {
 		}
 
 		if (isset($this->request->post['shindo_apikey'])) {
-			$data['shindo_apikey'] = $this->request->post['shindo_api'];
+			$data['shindo_apikey'] = $this->request->post['shindo_apikey'];
 		} else {
 			$data['shindo_apikey'] = $this->config->get('shindo_apikey');
+		}
+		if (isset($this->request->post['shindo_status'])) {
+			$data['shindo_status'] = $this->request->post['shindo_status'];
+		} else {
+			$data['shindo_status'] = $this->config->get('shindo_status');
 		}
 
 		$this->load->model('localisation/geo_zone');

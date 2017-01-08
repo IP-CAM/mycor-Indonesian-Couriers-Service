@@ -98,6 +98,10 @@
       <label class="col-sm-2 control-label" for="input-payment-district"><?php echo $entry_district; ?></label>
       <div class="col-sm-10">
         <select name="district_id" id="input-payment-district" class="form-control">
+          <?php if (!empty($district_id)) {?>
+          <option value="<?php echo $district_id; ?>"></option>
+          <?php } ?>
+
         </select>
         <!--<?php if ($error_district) { ?>
         <div class="text-danger"><?php echo $error_district; ?></div>
@@ -403,6 +407,5 @@ $('select[name=\'zone_id\']').on('change', function() {
 		}
 	});
 });
-
 $('select[name=\'zone_id\']').trigger('change');
 //--></script>

@@ -70,13 +70,14 @@ class ModelExtensionShippingIgsjne extends Model {
 						if ($this->config->get('config_currency') <>'IDR') {
 							$cost = $cost / $curr['value'];
 						}
-						$etd =  ' - '. ($res['cost'][0]['etd'] === '1-1' ? '1' : $res['cost'][0]['etd']) . ' '. $days . ' ';
+						$etd =  ($res['cost'][0]['etd'] === '1-1' ? '1' : $res['cost'][0]['etd']) . ' '. $days . ' ';
 						$quote_data[$res['service']] = array(
 							'code'         => $classname . '.' . $res['service'],
-							'title'        => 'JNE - ' . $res['service'] . $etd,
+							'title'        => 'JNE - ' . $res['service'],// . $etd,
 							'cost'         => $cost,
 							'tax_class_id' => $this->config->get($classname.'_tax_class_id'),
-							'text'         => $this->currency->format($this->tax->calculate($cost, $this->config->get($classname.'_tax_class_id'), $this->config->get('config_tax')), $this->session->data['currency'])
+							'text'         => $this->currency->format($this->tax->calculate($cost, $this->config->get($classname.'_tax_class_id'), $this->config->get('config_tax')), $this->session->data['currency']),
+							'etd'					=> $etd
 						);
 					}
 				}

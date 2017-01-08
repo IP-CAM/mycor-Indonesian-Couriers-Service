@@ -355,7 +355,6 @@ class ControllerCheckoutGuest extends Controller {
 				$this->session->data['shipping_address']['zone_id'] = $this->request->post['zone_id'];
 				//frd
 				$this->session->data['shipping_address']['district_id'] = $this->request->post['district_id'];
-
 				//---
 				if ($country_info) {
 					$this->session->data['shipping_address']['country'] = $country_info['name'];

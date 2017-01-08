@@ -39,6 +39,20 @@
               <div class="tab-content">
                 <div class="tab-pane active" id="tab-general">
                   <div class="form-group">
+                    <label class="col-sm-2 control-label" for="input-shindo-status"><?php echo $entry_status; ?></label>
+                    <div class="col-sm-10">
+                      <select name="shindo_status" id="input-shindo-status" class="form-control">
+                        <?php if ($shindo_status) { ?>
+                        <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
+                        <option value="0"><?php echo $text_disabled; ?></option>
+                        <?php } else { ?>
+                        <option value="1"><?php echo $text_enabled; ?></option>
+                        <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
+                        <?php } ?>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
                     <label class="col-sm-2 control-label" for="input-apikey"><?php echo $entry_apikey; ?></label>
                     <div class="col-sm-10">
                         <input type="text" name="shindo_apikey" value="<?php echo $shindo_apikey; ?>" placeholder="<?php echo $entry_apikey; ?>" id="input-apikey" class="form-control" />

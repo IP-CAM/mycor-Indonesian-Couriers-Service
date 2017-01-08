@@ -14,6 +14,11 @@ class ControllerCheckoutShippingMethod extends Controller {
 			$results[] = array('code'=>'igspos');
 			$results[] = array('code'=>'igstiki');
 			$results[] = array('code'=>'igsjne');
+			foreach ($results as $key => $result) {
+				if ($result['code']=='shindo') {
+					unset ($results[$key]);
+				}
+			}
 			//----
 			foreach ($results as $result) {
 				if ($this->config->get($result['code'] . '_status')) {
@@ -128,7 +133,6 @@ class ControllerCheckoutShippingMethod extends Controller {
 
 		if (!$json) {
 			$this->session->data['shipping_method'] = $this->session->data['shipping_methods'][$shipping[0]]['quote'][$shipping[1]];
-
 			$this->session->data['comment'] = strip_tags($this->request->post['comment']);
 		}
 

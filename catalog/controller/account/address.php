@@ -81,6 +81,15 @@ class ControllerAccountAddress extends Controller {
 			// Default Shipping Address
 			if (isset($this->session->data['shipping_address']['address_id']) && ($this->request->get['address_id'] == $this->session->data['shipping_address']['address_id'])) {
 				$this->session->data['shipping_address'] = $this->model_account_address->getAddress($this->request->get['address_id']);
+				//frd
+				$this->load->model('localisation/district');
+				$district = $this->model_localisation_district->getDistrict($this->session->data['shipping_address']['district_id']);
+				if (isset($district['rajaongkir']['results']['city_name'])){
+					$this->session->data['shipping_address']['district'] = $district['rajaongkir']['results']['city_name'] . ' - ' . $district['rajaongkir']['results']['type'];
+				} else {
+					$this->session->data['shipping_address']['district'] = '';
+				}
+				//---
 
 				unset($this->session->data['shipping_method']);
 				unset($this->session->data['shipping_methods']);
@@ -89,6 +98,15 @@ class ControllerAccountAddress extends Controller {
 			// Default Payment Address
 			if (isset($this->session->data['payment_address']['address_id']) && ($this->request->get['address_id'] == $this->session->data['payment_address']['address_id'])) {
 				$this->session->data['payment_address'] = $this->model_account_address->getAddress($this->request->get['address_id']);
+				//frd
+				$this->load->model('localisation/district');
+				$district = $this->model_localisation_district->getDistrict($this->session->data['payment_address']['district_id']);
+				if (isset($district['rajaongkir']['results']['city_name'])){
+					$this->session->data['payment_address']['district'] = $district['rajaongkir']['results']['city_name'] . ' - ' . $district['rajaongkir']['results']['type'];
+				} else {
+					$this->session->data['payment_address']['district'] = '';
+				}
+				//---
 
 				unset($this->session->data['payment_method']);
 				unset($this->session->data['payment_methods']);

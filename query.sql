@@ -1,4 +1,6 @@
-﻿ALTER TABLE oc_address ADD COLUMN district_id INT(11) NULL;
+﻿ALTER TABLE `oc_order` ADD `payment_district_id` INT(11) NULL DEFAULT NULL AFTER `smsphone`, ADD `shipping_district_id` INT(11) NULL DEFAULT NULL AFTER `payment_district_id`, ADD `payment_district` VARCHAR(128) NULL DEFAULT NULL AFTER `shipping_district_id`, ADD `shipping_district` VARCHAR(128) NULL DEFAULT NULL AFTER `payment_district`;
+
+ALTER TABLE oc_address ADD COLUMN district_id INT(11) NULL;
 
 ALTER TABLE oc_zone ADD COLUMN raoprop_id INT(11) NULL;
 

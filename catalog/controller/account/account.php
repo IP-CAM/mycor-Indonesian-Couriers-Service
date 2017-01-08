@@ -125,7 +125,6 @@ class ControllerAccountAccount extends Controller {
 		$json = array();
 
 		$this->load->model('localisation/zone');
-
 		$zone_info = $this->model_localisation_zone->getZone($this->request->get['zone_id']);
 		$json = array();
 		if ($zone_info) {

@@ -25,6 +25,10 @@ class ModelExtensionShippingIgstiki extends Model {
 			$from = $this->config->get('config_weight_class_id');
 			$to = $this->config->get($classname . '_weight_class_id');
 			$shipping_weight = str_replace(',','',$this->weight->convert($shipping_weight, $from, $to));
+			//weight not allowed 0
+			if ($shipping_weight == 0) {
+				$shipping_weight = 1;
+			}
 			$hf = 0;
 			if ($this->config->get($classname . '_handling')) {
 					$hf = $this->config->get($classname . '_handling');
@@ -126,9 +130,5 @@ class ModelExtensionShippingIgstiki extends Model {
 		} else {
 			return json_decode($response, true);
 		}
-
-
 	}
-
-
 }

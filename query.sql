@@ -12,6 +12,7 @@ UPDATE oc_zone SET name = 'Nusa Tenggara Timur (NTT)' WHERE name = 'Nusa Tenggar
 UPDATE oc_zone SET name = 'Bangka Belitung' WHERE name = 'Kepulauan Bangka Belitung';
 UPDATE oc_zone SET name = 'DKI Jakarta' WHERE name = 'Jakarta';
 UPDATE oc_zone SET name = 'Nanggroe Aceh Darussalam (NAD)' WHERE name = 'Aceh';
+UPDATE oc_zone SET name = 'DI Yogyakarta' WHERE name = 'Yogyakarta';
 
 UPDATE oc_zone SET raoprop_id ='1' WHERE name = 'Bali';
 UPDATE oc_zone SET raoprop_id ='2' WHERE name = 'Bangka Belitung';

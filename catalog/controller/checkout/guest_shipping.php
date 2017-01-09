@@ -210,6 +210,15 @@ class ControllerCheckoutGuestShipping extends Controller {
 				$this->session->data['shipping_address']['zone'] = '';
 				$this->session->data['shipping_address']['zone_code'] = '';
 			}
+			//frd
+			$this->load->model('localisation/district');
+			$district = $this->model_localisation_district->getDistrict($this->session->data['shipping_address']['district_id']);
+			if (isset($district['rajaongkir']['results']['city_name'])){
+				$this->session->data['shipping_address']['district'] = $district['rajaongkir']['results']['city_name'] . ' - ' . $district['rajaongkir']['results']['type'];
+			} else {
+				$this->session->data['shipping_address']['district'] = '';
+			}
+			//---
 
 			if (isset($this->request->post['custom_field'])) {
 				$this->session->data['shipping_address']['custom_field'] = $this->request->post['custom_field'];

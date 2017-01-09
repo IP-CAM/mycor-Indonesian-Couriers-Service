@@ -1867,8 +1867,7 @@ class ControllerSaleOrder extends Controller {
 		}
 
 		foreach ($orders as $order_id) {
-			$this->model_sale_order->getOrder($order_id);
-			//print_r($order_info);
+			$order_info = $this->model_sale_order->getOrder($order_id);
 			// Make sure there is a shipping method
 			if ($order_info && $order_info['shipping_code']) {
 				$store_info = $this->model_setting_setting->getSetting('config', $order_info['store_id']);

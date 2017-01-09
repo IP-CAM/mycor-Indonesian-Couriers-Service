@@ -11,9 +11,11 @@ class ControllerCheckoutShippingMethod extends Controller {
 
 			$results = $this->model_extension_extension->getExtensions('shipping');
 			//frd
-			$results[] = array('code'=>'igspos');
-			$results[] = array('code'=>'igstiki');
-			$results[] = array('code'=>'igsjne');
+			if ($this->config->get('shindo_status')==true) {
+				$results[] = array('code'=>'igspos');
+				$results[] = array('code'=>'igstiki');
+				$results[] = array('code'=>'igsjne');
+			}
 			foreach ($results as $key => $result) {
 				if ($result['code']=='shindo') {
 					unset ($results[$key]);

@@ -262,5 +262,20 @@ class ControllerExtensionShippingShindo extends Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+	public function install() {
+		if ($this->user->hasPermission('modify', 'extension/extension')) {
+			$this->load->model('extension/shipping/shindo');
+
+			$this->model_extension_shipping_shindo->install();
+		}
+	}
+
+	public function uninstall() {
+		if ($this->user->hasPermission('modify', 'extension/extension')) {
+			$this->load->model('extension/shipping/shindo');
+
+			$this->model_extension_shipping_shindo->uninstall();
+		}
+	}
 
 }

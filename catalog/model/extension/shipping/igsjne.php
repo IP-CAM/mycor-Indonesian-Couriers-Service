@@ -53,7 +53,7 @@ class ModelExtensionShippingIgsjne extends Model {
 			$key = $this->config->get('shindo_apikey');
 			$json = $this->getCost($origin_id, $district_id, $shipping_weight, $key);
 			$quote_data = array();
-			if (isset($json['rajaongkir']['results'][0])) {
+			if (isset($json['rajaongkir']) && isset($json['rajaongkir']['results']) && isset($json['rajaongkir']['results'][0]) && isset($json['rajaongkir']['results'][0]['costs'])) {
 				foreach ($json['rajaongkir']['results'][0]['costs'] as $res) {
 					$stat = false;
 					foreach ($this->config->get($classname. '_service') as $s) {

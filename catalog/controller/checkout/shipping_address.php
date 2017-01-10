@@ -52,7 +52,7 @@ class ControllerCheckoutShippingAddress extends Controller {
 		}
 
 		//frd
-		if (isset($this->request->post['shipping_address']['district_id'])) {
+		if (isset($this->session->data['shipping_address']['district_id'])) {
 			$data['district_id'] =  $this->session->data['shipping_address']['district_id'];
 		} else {
 			$data['district_id'] = '';

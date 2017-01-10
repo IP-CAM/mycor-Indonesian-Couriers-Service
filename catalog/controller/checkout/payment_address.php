@@ -45,7 +45,7 @@ class ControllerCheckoutPaymentAddress extends Controller {
 			$data['zone_id'] = '';
 		}
 		//frd
-		if (isset($this->request->post['payment_address']['district_id'])) {
+		if (isset($this->session->data['payment_address']['district_id'])) {
 			$data['district_id'] =  $this->session->data['payment_address']['district_id'];
 		} else {
 			$data['district_id'] = '';

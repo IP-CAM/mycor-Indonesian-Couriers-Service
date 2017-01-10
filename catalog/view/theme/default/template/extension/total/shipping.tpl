@@ -122,6 +122,11 @@ $('#button-quote').on('click', function() {
 							}
 
 							html += json['shipping_method'][i]['quote'][j]['title'] + ' - ' + json['shipping_method'][i]['quote'][j]['text'] + '</label></div>';
+              /*frd*/
+              if(typeof(json['shipping_method'][i]['quote'][j]['etd']) != "undefined" && json['shipping_method'][i]['quote'][j]['etd'] !== null) {
+                html += '<p style="font-size:85%;">' + json['shipping_method'][i]['quote'][j]['etd'] + '</p>';
+              }
+              /*--*/
 						}
 					} else {
 						html += '<div class="alert alert-danger">' + json['shipping_method'][i]['error'] + '</div>';

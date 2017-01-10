@@ -48,7 +48,6 @@ class ModelExtensionShippingIgsjne extends Model {
 				);
 				return $method_data;
 			}
-
 			$origin_id = $this->config->get('shindo_city_id');
 			$district_id = $address['district_id'];
 			$key = $this->config->get('shindo_apikey');
@@ -74,15 +73,21 @@ class ModelExtensionShippingIgsjne extends Model {
 						if ($this->config->get('config_currency') <>'IDR') {
 							$cost = $cost / $curr['value'];
 						}
-						$etd =  ($res['cost'][0]['etd'] === '1-1' ? '1' : $res['cost'][0]['etd']) . ' '. $days . ' ';
+						$etd = '';
+						if ($res['cost'][0]['etd'] <> '') {
+							$etd =  ($res['cost'][0]['etd'] === '1-1' ? '1' : $res['cost'][0]['etd']) . ' '. $days . ' ';
+						}
 						$quote_data[$res['service']] = array(
 							'code'         => $classname . '.' . $res['service'],
 							'title'        => 'JNE - ' . $res['service'],// . $etd,
 							'cost'         => $cost,
 							'tax_class_id' => $this->config->get($classname.'_tax_class_id'),
 							'text'         => $this->currency->format($this->tax->calculate($cost, $this->config->get($classname.'_tax_class_id'), $this->config->get('config_tax')), $this->session->data['currency']),
-							'etd'					=> $etd
+							//'etd'					=> $etd
 						);
+						if ($etd <> '') {
+							$quote_data[$res['service']]['etd'] = $etd;
+						}
 					}
 				}
 				$method_data = array(

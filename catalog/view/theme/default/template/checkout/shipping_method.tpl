@@ -15,10 +15,9 @@
     <?php } else { ?>
     <input type="radio" name="shipping_method" value="<?php echo $quote['code']; ?>" />
     <?php } ?>
-    <?php echo $quote['title']; ?> - <?php echo $quote['text']; ?></label>
+    <!--<?php echo $quote['title']; ?> - <?php echo $quote['text']; ?></label>-->
     <!--frd-->
-    <!--<?php echo $quote['title'] . (isset($quote['etd']) ?  ' - '. $quote['etd'] : '') ; ?> - <?php echo $quote['text'];?></label>-->
-    <p style="font-size:85%;"><?php echo isset($quote['etd']) ?  'Est: ' . $quote['etd'] : ''; ?></p>
+    <?php echo $quote['title']; ?> - <?php echo $quote['text']; ?><p style="font-size:85%;"><?php echo isset($quote['etd']) ?  'Est: ' . $quote['etd'] : ''; ?></p></label>
     <!---->
 </div>
 <?php } ?>

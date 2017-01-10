@@ -121,10 +121,12 @@ $('#button-quote').on('click', function() {
 								html += '<input type="radio" name="shipping_method" value="' + json['shipping_method'][i]['quote'][j]['code'] + '" />';
 							}
 
-							html += json['shipping_method'][i]['quote'][j]['title'] + ' - ' + json['shipping_method'][i]['quote'][j]['text'] + '</label></div>';
+							//html += json['shipping_method'][i]['quote'][j]['title'] + ' - ' + json['shipping_method'][i]['quote'][j]['text'] + '</label></div>';
               /*frd*/
               if(typeof(json['shipping_method'][i]['quote'][j]['etd']) != "undefined" && json['shipping_method'][i]['quote'][j]['etd'] !== null) {
-                html += '<p style="font-size:85%;">' + json['shipping_method'][i]['quote'][j]['etd'] + '</p>';
+                html += json['shipping_method'][i]['quote'][j]['title'] + ' - ' + json['shipping_method'][i]['quote'][j]['text'] + '<p style="font-size:85%;">Est: ' + json['shipping_method'][i]['quote'][j]['etd'] + '</p>' + '</label></div>';
+              } else {
+                html += json['shipping_method'][i]['quote'][j]['title'] + ' - ' + json['shipping_method'][i]['quote'][j]['text'] + '</label></div>';
               }
               /*--*/
 						}

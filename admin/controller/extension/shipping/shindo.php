@@ -190,6 +190,10 @@ class ControllerExtensionShippingShindo extends Controller {
 			'value' => 'JTR'
 		);
 		$data['igsjne_services'][] = array(
+			'text'  => 'Super Speed',
+			'value' => 'SPS'
+		);
+		$data['igsjne_services'][] = array(
 			'text'  => 'JNE Trucking',
 			'value' => 'JTR<150'
 		);
@@ -197,7 +201,11 @@ class ControllerExtensionShippingShindo extends Controller {
 			'text'  => 'JNE Trucking',
 			'value' => 'JTR>250'
 		);
-
+		$data['igsjne_services'][] = array(
+			'text'  => 'JNE Trucking',
+			'value' => 'JTR250'
+		);
+		//------
 		$data['igspos_services'][] = array(
 			'text'  => 'Surat Kilat Khusus',
 			'value' => 'Surat Kilat Khusus'
@@ -212,7 +220,16 @@ class ControllerExtensionShippingShindo extends Controller {
 			'text'  => 'Paketpos Biasa',
 			'value' => 'Paketpos Biasa'
 		);
+		$data['igspos_services'][] = array(
+			'text'  => 'Paket Kilat Khusus',
+			'value' => 'Paket Kilat Khusus'
+		);
+		$data['igspos_services'][] = array(
+			'text'  => 'Paket Jumbo Ekonomi',
+			'value' => 'Paket Jumbo Ekonomi'
+		);
 
+		//----
 		$data['igstiki_services'][] = array(
 			'text'  => 'REGULAR SERVICE',
 			'value' => 'REG'

@@ -191,7 +191,7 @@ class ModelCheckoutOrder extends Model {
 				'payment_city'            => $order_query->row['payment_city'],
 				'payment_zone_id'         => $order_query->row['payment_zone_id'],
 				'payment_zone'            => $order_query->row['payment_zone'],
-				'payment_district_id'     => $order_query->row['payment_zone_id'], //frd
+				'payment_district_id'     => $order_query->row['payment_district_id'], //frd
 				'payment_district'        => $order_query->row['payment_district'], //frd
 				'payment_zone_code'       => $payment_zone_code,
 				'payment_country_id'      => $order_query->row['payment_country_id'],

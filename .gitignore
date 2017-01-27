@@ -1,6 +1,7 @@
 /*
 !/.gitignore
 !/query.sql
+
 !/admin
 /admin/*
 !/admin/controller
@@ -41,6 +42,14 @@
 /admin/model/extension/shipping/*
 !/admin/model/extension/shipping/shindo.php
 
+!/admin/model/sale
+/admin/model/sale/*
+!/admin/model/sale/order.php
+
+!/admin/model/localisation
+/admin/model/localisation/*
+!/admin/model/localisation/district.php
+
 !/admin/view
 /admin/view/*
 !/admin/view/template
@@ -76,6 +85,12 @@
 !/catalog/controller/checkout/confirm.php
 !/catalog/controller/checkout/login.php
 !/catalog/controller/checkout/register.php
+
+!/catalog/controller/extension
+/catalog/controller/extension/*
+!/catalog/controller/extension/total
+/catalog/controller/extension/total/*
+!/catalog/controller/extension/total/shipping.php
 
 !/catalog/controller/api
 /catalog/controller/api/*
@@ -127,6 +142,10 @@
 !/catalog/language/en-gb/extension/shipping/igspos.php
 !/catalog/language/en-gb/extension/shipping/igsjne.php
 
+!/catalog/language/en-gb/extension/total
+/catalog/language/en-gb/extension/total/*
+!/catalog/language/en-gb/extension/total/shipping.php
+
 !/catalog/view
 /catalog/view/*
 !/catalog/view/theme
@@ -140,6 +159,12 @@
 !/catalog/view/theme/default/template/account/address_form.tpl
 !/catalog/view/theme/default/template/account/register.tpl
 
+!/catalog/view/theme/default/template/extension
+/catalog/view/theme/default/template/extension/*
+!/catalog/view/theme/default/template/extension/total
+/catalog/view/theme/default/template/extension/total/*
+!/catalog/view/theme/default/template/extension/total/shipping.tpl
+
 !/catalog/view/theme/default/template/checkout
 /catalog/view/theme/default/template/checkout/*
 !/catalog/view/theme/default/template/checkout/payment_address.tpl
@@ -147,3 +172,4 @@
 !/catalog/view/theme/default/template/checkout/guest_shipping.tpl
 !/catalog/view/theme/default/template/checkout/guest.tpl
 !/catalog/view/theme/default/template/checkout/shipping_method.tpl
+!/catalog/view/theme/default/template/checkout/register.tpl

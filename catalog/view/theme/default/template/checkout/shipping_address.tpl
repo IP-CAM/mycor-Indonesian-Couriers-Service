@@ -95,9 +95,9 @@
     </div>
     <!--frd-->
     <div class="form-group required">
-      <label class="col-sm-2 control-label" for="input-payment-district"><?php echo $entry_district; ?></label>
+      <label class="col-sm-2 control-label" for="input-shipping-district"><?php echo $entry_district; ?></label>
       <div class="col-sm-10">
-        <select name="district_id" id="input-payment-district" class="form-control">
+        <select name="district_id" id="input-shipping-district" class="form-control">
           <?php if (!empty($district_id)) {?>
           <option value="<?php echo $district_id; ?>"></option>
           <?php } ?>
@@ -370,12 +370,12 @@ $('#collapse-shipping-address select[name=\'country_id\']').trigger('change');
 
 <!--frd-->
 <script type="text/javascript"><!--
-$('select[name=\'zone_id\']').on('change', function() {
+$('#collapse-shipping-address select[name=\'zone_id\']').on('change', function() {
 	$.ajax({
 		url: 'index.php?route=account/account/zone&zone_id=' + this.value,
 		dataType: 'json',
 		beforeSend: function() {
-			$('select[name=\'zone_id\']').after(' <i class="fa fa-circle-o-notch fa-spin"></i>');
+			$('#collapse-shipping-address select[name=\'zone_id\']').after(' <i class="fa fa-circle-o-notch fa-spin"></i>');
 		},
 		complete: function() {
 			$('.fa-spin').remove();
@@ -399,12 +399,12 @@ $('select[name=\'zone_id\']').on('change', function() {
 				/*html += '<option value="0" selected="selected"><?php echo $text_none; ?></option>';*/
 			}
 
-			$('select[name=\'district_id\']').html(html);
+			$('#collapse-shipping-address select[name=\'district_id\']').html(html);
 		},
 		error: function(xhr, ajaxOptions, thrownError) {
 			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
 		}
 	});
 });
-$('select[name=\'zone_id\']').trigger('change');
+$('#collapse-shipping-address select[name=\'zone_id\']').trigger('change');
 //--></script>

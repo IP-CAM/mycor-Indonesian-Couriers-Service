@@ -242,7 +242,7 @@ class ControllerCheckoutGuest extends Controller {
 			}
 			//frd
 			if (!isset($this->request->post['district_id']) || $this->request->post['district_id'] == '' || !is_numeric($this->request->post['district_id'])) {
-				$json['error']['district'] = $this->language->get('district_zone');
+				$json['error']['district'] = $this->language->get('error_district');
 			}
 			//------
 			// Customer Group

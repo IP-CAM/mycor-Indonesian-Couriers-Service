@@ -24,6 +24,7 @@ class ControllerCheckoutRegister extends Controller {
 		$data['entry_city'] = $this->language->get('entry_city');
 		$data['entry_country'] = $this->language->get('entry_country');
 		$data['entry_zone'] = $this->language->get('entry_zone');
+		$data['entry_district'] = $this->language->get('entry_district'); //frd
 		$data['entry_newsletter'] = sprintf($this->language->get('entry_newsletter'), $this->config->get('config_name'));
 		$data['entry_password'] = $this->language->get('entry_password');
 		$data['entry_confirm'] = $this->language->get('entry_confirm');
@@ -266,8 +267,6 @@ class ControllerCheckoutRegister extends Controller {
 					$district = $this->model_localisation_district->getDistrict($this->session->data['shipping_address']['district_id']);
 					if (isset($district['rajaongkir']['results']['city_name'])){
 						$this->session->data['shipping_address']['district'] = $district['rajaongkir']['results']['city_name'] . ' - ' . $district['rajaongkir']['results']['type'];
-					} else {
-						$this->session->data['shipping_address']['district'] = '';
 					} else {
 						$this->session->data['shipping_address']['district'] = '';
 					}
